@@ -1,75 +1,34 @@
 # ADMM-Based Trajectory Reconstruction Pipeline
 
-This project simulates a 6-DOF trajectory (e.g., missile or UAV), injects synthetic noise and missing data, and reconstructs the full trajectory using an ADMM-based optimization method in a sliding window fashion.
+![Figure 1 – Reconstruction Result](Figure_1.png)
 
-## 📌 Features
+> 6-DOF 비행체(미사일·UAV 등) 궤적을 시뮬레이션하고  
+> 노이즈·결손 구간이 있는 데이터를 **ADMM** 으로 복원합니다.
 
-- Monte Carlo simulation of guided ballistic flight
-- Corruption with Gaussian noise and missing segments
-- ADMM-based denoising and signal reconstruction
-- Sliding window recovery with RMSE / MAE / Max Error evaluation
-- Visualization of reconstructed and corrupted data
+---
 
-## 🚀 Requirements
+## ✨ 주요 기능
+- Monte Carlo 기반 비행 궤적 생성
+- 가우시안 노이즈 + 결손 구간 데이터 생성
+- **ADMM** 슬라이딩 윈도우 복원
+- RMSE / MAE / Max Error 지표 계산 & 시각화
 
-- Python 3.8 or higher
-- Dependencies listed in `requirements.txt`
+## 🛠️ 요구 사항
+- **Python ≥ 3.8**
+- 의존성: `requirements.txt` 참조
 
-## 📦 Installation
-
-Create a virtual environment and install dependencies:
-
+## ⚡ 설치
 ```bash
+# 1) 가상 환경 생성
 python -m venv venv
-venv\Scripts\activate        # On Windows (cmd)
-# OR
-source venv/bin/activate     # On macOS/Linux
+# Windows
+venv\Scripts\activate
+# macOS/Linux
+source venv/bin/activate
 
-pip install --upgrade pip
+# 2) 패키지 설치
+python -m pip install --upgrade pip
 pip install -r requirements.txt
-```
-
-## 🏃‍♂️ Run
-
-Execute the main pipeline script:
-
-```bash
-python tr.py
-```
-
-This will:
-
-1. Generate one simulated launch trajectory.
-2. Corrupt the data with noise and missing values.
-3. Reconstruct the signal using ADMM.
-4. Plot the recovered vs. ground truth vs. corrupted signal.
-
-## 📈 Output
-
-- Sliding window plots with ADMM reconstruction in red
-- Quantitative metrics: RMSE / MAE / Max Error over time
-
-## 🧠 Algorithm
-
-The core optimization solves the following problem for each window:
-
-```
-minimize   λ₁‖x - y‖₁ + λ₂‖x - y‖₂² + λ_D‖D²x‖₂²
-```
-
-Using ADMM to alternate between subproblems, the signal is recovered robustly even in the presence of heavy corruption.
-
-## 📁 Directory Structure
-
-```
-ADMM_TRJ/
-│
-├── tr.py                # Main script
-├── requirements.txt     # Dependencies
-├── README.md            # You are here
-```
-
-## 🧑‍💻 Author
 
 Jinwoo Im (`imrealhelper`)  
 Inha University, Dept. of Aerospace Engineering
