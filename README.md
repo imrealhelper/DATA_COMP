@@ -76,6 +76,17 @@ ADMM_TRJ/
 └── README.md          # 바로 이 파일
 ```
 
+## 🧠 간단한 딥러닝 예제
+
+`train_impact_model.py` 스크립트는 몬테카를로 시뮬레이션으로 생성한
+데이터를 이용하여 마지막 탄착 지점을 예측하는 간단한 신경망을 학습합니다.
+
+```bash
+python train_impact_model.py
+```
+
+학습이 완료되면 `impact_model.pth` 파일이 생성됩니다.
+
 ## 👤 Author
 
 **Jinwoo Im** (`imrealhelper`)
